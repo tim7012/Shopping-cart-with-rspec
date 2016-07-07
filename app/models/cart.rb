@@ -1,16 +1,4 @@
-class CartItem
 
-  attr_reader :product_id, :quantity
-
-  def initialize(product_id, quantity = 1)
-    @product_id = product_id
-    @quantity = quantity
-  end
-
-  def increment
-  @quantity += 1
-  end
-end
 
 
 
@@ -24,12 +12,12 @@ class Cart
 
   def add_item(product_id)
     #找: item = 找item
-    item = @items.find{|x| x.product_id == product_id}
+    item = items.find{|x| x.product_id == product_id}
     #if 有一樣的
     if item
       item.increment
     else
-      @items << CartItem.new(product_id)
+      items << CartItem.new(product_id)
     end
     #  item.quantity+=1
     #else
@@ -37,7 +25,8 @@ class Cart
 
   end
 
+  #items -> call a function return @items
   def empty?
-    @items.empty?
+    items.empty?
   end
 end
