@@ -32,6 +32,15 @@ RSpec.describe Cart, type: :model do
       expect(cart.items.last.quantity).to be 8
     end
 
+    it "可取出正確商品" do
+      cart = Cart.new
+      p1 = Product.create
+      p2 = Product.create
+      cart.add_item(p1.id)
+      cart.add_item(p2.id)
+      expect(cart.items.first.product).to be_a Product
+      expect(cart.items.last.product).to be_a Product
+    end
 
   end
 end
